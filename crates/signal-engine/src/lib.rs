@@ -44,10 +44,9 @@ impl SignalEngine {
                 (SignalSide::BuyYes, net_yes_edge_bps)
             } else if net_no_edge_bps >= self.min_edge_bps && posterior.confidence >= 0.2 {
                 (SignalSide::BuyNo, net_no_edge_bps)
-            } else if should_preresolution_exit {
-                (SignalSide::Exit, strongest_edge)
-            } else if has_position
-                && (strongest_edge < self.min_edge_bps / 2 || posterior.confidence < 0.2)
+            } else if should_preresolution_exit
+                || (has_position
+                    && (strongest_edge < self.min_edge_bps / 2 || posterior.confidence < 0.2))
             {
                 (SignalSide::Exit, strongest_edge)
             } else {

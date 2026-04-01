@@ -681,10 +681,10 @@ mod tests {
     #[test]
     fn merges_optional_flag_buckets() {
         let flags = collect_flag_set(&[
-            &vec!["stale forecast".to_string()],
-            &vec!["model disagreement".to_string()],
-            &vec!["station/rule mismatch".to_string()],
-            &vec!["stale forecast".to_string()],
+            &["stale forecast".to_string()],
+            &["model disagreement".to_string()],
+            &["station/rule mismatch".to_string()],
+            &["stale forecast".to_string()],
         ]);
 
         assert_eq!(

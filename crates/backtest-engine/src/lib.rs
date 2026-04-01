@@ -53,7 +53,7 @@ pub fn execution_replay_from_storage(storage: &Storage) -> Result<Vec<ExecutionR
         let fill_price = relevant.map(|point| point.price);
         let simulated_pnl_per_share = match signal.side {
             domain_core::SignalSide::BuyYes => fill_price.map(|price| 1.0 - price),
-            domain_core::SignalSide::BuyNo => fill_price.map(|price| price),
+            domain_core::SignalSide::BuyNo => fill_price,
             domain_core::SignalSide::Exit | domain_core::SignalSide::Hold => None,
         };
 
