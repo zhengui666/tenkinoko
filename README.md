@@ -1,5 +1,10 @@
 # Tenkinoko
 
+[![CI](https://github.com/zhengui666/tenkinoko/actions/workflows/ci.yml/badge.svg)](https://github.com/zhengui666/tenkinoko/actions/workflows/ci.yml)
+[![Rust](https://img.shields.io/badge/rust-2024%20edition-orange.svg)](https://www.rust-lang.org/)
+[![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/zhengui666/tenkinoko/blob/main/LICENSE)
+[![Status](https://img.shields.io/badge/status-active%20development-blue.svg)](https://github.com/zhengui666/tenkinoko)
+
 > 面向 **Polymarket 天气市场** 的单机自动交易守护进程。  
 > 目标不是“更快地下单”，而是把 **历史可用天气预报、多源校准模型、严格风控** 组合成一套可恢复、可回放、可维护的短周期交易系统。
 
@@ -230,6 +235,8 @@ cargo run --release --bin tradingd -- execution-health
 - 微服务化拆分
 - 追求高频做市
 - 用 prompt 直接替代概率模型与风控
+
+提交代码前，请先阅读 [CONTRIBUTING.md](/Users/zhangzeyuan/opt/tenkinoko/CONTRIBUTING.md)。
 
 ## Disclaimer
 

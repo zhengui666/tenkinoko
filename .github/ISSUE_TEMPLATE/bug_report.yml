@@ -1,0 +1,75 @@
+name: Bug Report
+description: 报告实际缺陷、回测异常、状态机错误或恢复问题
+title: "[Bug] "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        请只报告可复现的问题。涉及交易、风控、恢复或回测的问题，请尽量提供最小复现信息。
+  - type: textarea
+    id: summary
+    attributes:
+      label: 问题概述
+      description: 用几句话描述问题是什么，以及它为什么重要
+      placeholder: 执行引擎在重启后重复提交同一订单
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: 复现步骤
+      description: 请写出最小复现步骤
+      placeholder: |
+        1. 使用某配置启动 tradingd
+        2. 触发某市场发现或执行路径
+        3. 重启进程
+        4. 观察重复状态
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: 预期行为
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: 实际行为
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: 影响模块
+      options:
+        - tradingd
+        - polymarket-adapter
+        - weather adapter
+        - posterior-models
+        - signal-engine
+        - risk-engine
+        - execution-engine
+        - storage-rocksdb
+        - backtest-engine
+        - telemetry / telegram
+        - other
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: 日志 / 错误信息
+      description: 粘贴关键信息，注意去掉密钥和隐私数据
+      render: text
+  - type: textarea
+    id: environment
+    attributes:
+      label: 环境信息
+      placeholder: |
+        OS:
+        Rust version:
+        Commit SHA:
+        Config notes:
