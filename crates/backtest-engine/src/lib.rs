@@ -188,17 +188,17 @@ mod tests {
             .as_nanos();
         let path = std::env::temp_dir().join(format!("tenkinoko-backtest-date-map-{unique}"));
         let storage = Storage::open(&path).expect("open storage");
-let market = Market {
-    market_id: "m1".to_string(),
-    condition_id: None,
-    slug: "slug".to_string(),
-    question: "q".to_string(),
-    description: None,
-    resolution_criteria: None,
-    source_url: None,
-    yes_token_id: None,
-    no_token_id: None,
-    spec: MarketSpec {
+        let market = Market {
+            market_id: "m1".to_string(),
+            condition_id: None,
+            slug: "slug".to_string(),
+            question: "q".to_string(),
+            description: None,
+            resolution_criteria: None,
+            source_url: None,
+            yes_token_id: None,
+            no_token_id: None,
+            spec: MarketSpec {
                 city: "Boston".to_string(),
                 station_id: None,
                 target_date: NaiveDate::from_ymd_opt(2026, 4, 1).expect("date"),

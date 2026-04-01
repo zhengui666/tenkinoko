@@ -503,7 +503,8 @@ fn map_market(value: Value) -> Result<Option<Market>> {
     let best_ask = first_f64(&value, &["bestAsk", "best_ask"]);
     let active = value.get("active").and_then(Value::as_bool).unwrap_or(true);
     let description = first_string(&value, &["description", "marketDescription"]).or_else(|| {
-        value.get("events")
+        value
+            .get("events")
             .and_then(Value::as_array)
             .and_then(|events| events.first())
             .and_then(|event| first_string(event, &["description", "marketDescription"]))
@@ -518,7 +519,8 @@ fn map_market(value: Value) -> Result<Option<Market>> {
         ],
     )
     .or_else(|| {
-        value.get("events")
+        value
+            .get("events")
             .and_then(Value::as_array)
             .and_then(|events| events.first())
             .and_then(|event| {
@@ -535,7 +537,8 @@ fn map_market(value: Value) -> Result<Option<Market>> {
             })
     });
     let source_url = first_string(&value, &["sourceUrl", "source_url"]).or_else(|| {
-        value.get("events")
+        value
+            .get("events")
             .and_then(Value::as_array)
             .and_then(|events| events.first())
             .and_then(|event| first_string(event, &["sourceUrl", "source_url"]))
@@ -706,7 +709,10 @@ mod tests {
         .expect("map market should succeed")
         .expect("market should exist");
 
-        assert_eq!(market.description.as_deref(), Some("Top-level description."));
+        assert_eq!(
+            market.description.as_deref(),
+            Some("Top-level description.")
+        );
         assert_eq!(
             market.resolution_criteria.as_deref(),
             Some("Use the official station high.")
@@ -738,7 +744,10 @@ mod tests {
         .expect("map market should succeed")
         .expect("market should exist");
 
-        assert_eq!(market.description.as_deref(), Some("Event-level description."));
+        assert_eq!(
+            market.description.as_deref(),
+            Some("Event-level description.")
+        );
         assert_eq!(
             market.resolution_criteria.as_deref(),
             Some("Resolve using the linked source.")

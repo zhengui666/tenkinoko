@@ -5,7 +5,7 @@ use domain_core::{
     ComparisonOp, ForecastBundle, LlmInsight, Market, PosteriorEstimate, WeatherMarketKind,
     WeatherMetric,
 };
-use serde::{de::DeserializeOwned, Deserialize, Serialize};
+use serde::{Deserialize, Serialize, de::DeserializeOwned};
 
 #[derive(Clone)]
 pub struct LlmAnalyst {
@@ -79,7 +79,10 @@ impl LlmAnalyst {
         posterior: &PosteriorEstimate,
     ) -> Result<Option<LlmInsight>> {
         let prompt = build_pre_trade_prompt(market, forecast, posterior);
-        let Some(structured) = self.request_structured::<StructuredInsight>(&prompt).await? else {
+        let Some(structured) = self
+            .request_structured::<StructuredInsight>(&prompt)
+            .await?
+        else {
             return Ok(None);
         };
 
@@ -101,7 +104,10 @@ impl LlmAnalyst {
         raw_market_text: &str,
     ) -> Result<Option<RuleParseInsight>> {
         let prompt = build_rule_parsing_prompt(market, raw_market_text);
-        let Some(structured) = self.request_structured::<StructuredRuleParse>(&prompt).await? else {
+        let Some(structured) = self
+            .request_structured::<StructuredRuleParse>(&prompt)
+            .await?
+        else {
             return Ok(None);
         };
 
@@ -172,7 +178,10 @@ impl LlmAnalyst {
 
         let response = self
             .client
-            .post(format!("{}/chat/completions", self.base_url.trim_end_matches('/')))
+            .post(format!(
+                "{}/chat/completions",
+                self.base_url.trim_end_matches('/')
+            ))
             .bearer_auth(api_key)
             .json(&request)
             .send()
@@ -193,8 +202,9 @@ impl LlmAnalyst {
             .map(|choice| choice.message.content)
             .with_context(|| format!("llm response missing choice for task {:?}", prompt.task))?;
 
-        let structured = serde_json::from_str::<T>(&raw_content)
-            .with_context(|| format!("decode llm json for task {:?}: {raw_content}", prompt.task))?;
+        let structured = serde_json::from_str::<T>(&raw_content).with_context(|| {
+            format!("decode llm json for task {:?}: {raw_content}", prompt.task)
+        })?;
 
         Ok(Some(structured))
     }
@@ -637,7 +647,8 @@ mod tests {
 
     #[test]
     fn pre_trade_prompt_mentions_trading_guardrails() {
-        let package = build_pre_trade_prompt(&sample_market(), &sample_forecast(), &sample_posterior());
+        let package =
+            build_pre_trade_prompt(&sample_market(), &sample_forecast(), &sample_posterior());
 
         assert_eq!(package.task, PromptTask::PreTradeInsight);
         assert!(package.system.contains("not a trader"));
@@ -725,20 +736,29 @@ mod tests {
         )
         .expect("json should decode");
 
-        assert_eq!(structured.summary, "Threshold direction is clear, but settlement source is implicit.");
+        assert_eq!(
+            structured.summary,
+            "Threshold direction is clear, but settlement source is implicit."
+        );
         assert_eq!(
             collect_flag_set(&[
                 &structured.caution_flags,
                 structured.ambiguities.as_deref().unwrap_or(&[])
             ]),
-            vec!["RULE_AMBIGUITY".to_string(), "SOURCE_NAME_NOT_EXPLICIT".to_string()]
+            vec![
+                "RULE_AMBIGUITY".to_string(),
+                "SOURCE_NAME_NOT_EXPLICIT".to_string()
+            ]
         );
     }
 
     #[test]
     fn divergence_prompt_mentions_disagreement_risk() {
-        let package =
-            build_forecast_divergence_prompt(&sample_market(), &sample_forecast(), &sample_posterior());
+        let package = build_forecast_divergence_prompt(
+            &sample_market(),
+            &sample_forecast(),
+            &sample_posterior(),
+        );
 
         assert_eq!(package.task, PromptTask::ForecastDivergence);
         assert!(package.system.contains("forecast-divergence analyst"));

@@ -648,7 +648,10 @@ fn merge_llm_outputs(
         }),
         (None, None, Some(divergence)) => Some(LlmInsight {
             market_id: market.market_id.clone(),
-            summary: join_summary_segments(&[format!("Forecast divergence: {}", divergence.summary)]),
+            summary: join_summary_segments(&[format!(
+                "Forecast divergence: {}",
+                divergence.summary
+            )]),
             caution_flags: merge_caution_flag_groups(&[&divergence.caution_flags]),
         }),
         (Some(insight), Some(rule), None) => Some(LlmInsight {
