@@ -1,0 +1,61 @@
+# macOS
+.DS_Store
+
+# Editor
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Rust / Cargo
+/target/
+**/target/
+Cargo.lock
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+secrets/
+credentials/
+
+# Runtime state
+data/
+db/
+logs/
+tmp/
+*.log
+*.sqlite
+*.db
+*.sst
+*.ldb
+*.wal
+
+# Coverage / profiling
+coverage/
+*.profraw
+*.profdata
+flamegraph.svg
+
+# Archives
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+
+# Python / notebooks sometimes used in research tooling
+.venv/
+venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.mypy_cache/
+.ipynb_checkpoints/
+
+# Node artifacts if docs/demo assets are added later
+node_modules/
+dist/
+
+# Generated screenshots and exports
+artifacts/
+exports/

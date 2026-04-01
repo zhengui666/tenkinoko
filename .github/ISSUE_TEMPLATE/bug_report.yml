@@ -1,0 +1,53 @@
+name: Bug Report
+description: Report a reproducible defect, replay anomaly, state-machine error, or recovery issue
+title: "[Bug] "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please report reproducible issues only. For trading, risk, recovery, or replay problems, include the smallest safe reproduction you can provide.
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: Describe what is wrong and why it matters
+      placeholder: The execution engine resubmits the same order after restart
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Reproduction Steps
+      description: Provide the smallest reliable reproduction
+      placeholder: |
+        1. Start `tradingd` with the attached configuration
+        2. Trigger the relevant market discovery or execution path
+        3. Restart the process during reconciliation
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected Behavior
+      description: What should have happened instead?
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual Behavior
+      description: What happened in practice?
+    validations:
+      required: true
+  - type: textarea
+    id: impact
+    attributes:
+      label: Impact
+      description: Call out any impact on risk, correctness, persistence, replay, or operator workflow
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Relevant commit, OS, configuration shape, and runtime mode

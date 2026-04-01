@@ -1,0 +1,42 @@
+name: Feature Request
+description: Propose a change that fits the repository goals and constraints
+title: "[Feature] "
+labels:
+  - enhancement
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Confirm that the proposal fits the repository direction: weather markets, single-machine deployment, RocksDB as the only persistent store, strict risk controls, and event-driven design.
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: Explain the gap or pain point before proposing a solution
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed Approach
+      description: Describe the approach you want to see implemented
+    validations:
+      required: true
+  - type: textarea
+    id: constraints
+    attributes:
+      label: Constraint Impact
+      description: Explain whether this affects the single writer model, RocksDB-only storage, risk controls, replay semantics, or resource budget
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives Considered
+      description: Describe other approaches you considered and rejected
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Checklist
+      options:
+        - label: I read README.md and AGENTS.md
+        - label: This proposal does not expand the project into a multi-database or multi-service platform
+        - label: This proposal does not make the LLM layer a direct trading decision-maker

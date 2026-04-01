@@ -1,0 +1,101 @@
+<svg width="1200" height="720" viewBox="0 0 1200 720" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="80" y1="60" x2="1110" y2="670" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0B1220"/>
+      <stop offset="1" stop-color="#172554"/>
+    </linearGradient>
+    <linearGradient id="panel" x1="190" y1="130" x2="980" y2="600" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#111827"/>
+      <stop offset="1" stop-color="#1E293B"/>
+    </linearGradient>
+    <linearGradient id="accentA" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#38BDF8"/>
+      <stop offset="1" stop-color="#22C55E"/>
+    </linearGradient>
+    <linearGradient id="accentB" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#F59E0B"/>
+      <stop offset="1" stop-color="#EF4444"/>
+    </linearGradient>
+    <filter id="shadow" x="0" y="0" width="1200" height="720" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="18" stdDeviation="24" flood-color="#020617" flood-opacity="0.35"/>
+    </filter>
+    <style>
+      .title { font: 700 32px ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #F8FAFC; }
+      .subtitle { font: 500 16px ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #94A3B8; }
+      .h { font: 700 18px ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #E2E8F0; }
+      .b { font: 500 14px ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #CBD5E1; }
+      .caps { font: 700 12px ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #7DD3FC; letter-spacing: 0.14em; }
+      .mono { font: 600 13px ui-monospace, SFMono-Regular, Menlo, monospace; fill: #BFDBFE; }
+    </style>
+  </defs>
+
+  <rect width="1200" height="720" rx="28" fill="url(#bg)"/>
+  <circle cx="1040" cy="110" r="180" fill="#0EA5E9" fill-opacity="0.08"/>
+  <circle cx="180" cy="640" r="200" fill="#22C55E" fill-opacity="0.07"/>
+
+  <g filter="url(#shadow)">
+    <rect x="70" y="58" width="1060" height="604" rx="30" fill="url(#panel)" stroke="#334155"/>
+  </g>
+
+  <text x="120" y="130" class="caps">TENKINOKO ARCHITECTURE</text>
+  <text x="120" y="170" class="title">Single-machine weather trading stack</text>
+  <text x="120" y="202" class="subtitle">Polymarket weather markets, probabilistic models, strict risk controls, RocksDB persistence.</text>
+
+  <rect x="120" y="248" width="220" height="122" rx="20" fill="#0F172A" stroke="#1E3A8A"/>
+  <text x="146" y="282" class="h">Market Inputs</text>
+  <text x="146" y="310" class="b">Polymarket adapter</text>
+  <text x="146" y="334" class="b">Market rules</text>
+  <text x="146" y="358" class="b">Executable prices / metadata</text>
+
+  <rect x="120" y="410" width="220" height="122" rx="20" fill="#0F172A" stroke="#14532D"/>
+  <text x="146" y="444" class="h">Weather Inputs</text>
+  <text x="146" y="472" class="b">Open-Meteo adapter</text>
+  <text x="146" y="496" class="b">NOAA adapter</text>
+  <text x="146" y="520" class="b">Forecast + observation snapshots</text>
+
+  <rect x="392" y="286" width="220" height="210" rx="22" fill="#111827" stroke="#0369A1"/>
+  <rect x="392" y="286" width="220" height="46" rx="22" fill="url(#accentA)"/>
+  <text x="418" y="316" class="h" fill="#082F49">Posterior + Signal Layer</text>
+  <text x="418" y="358" class="b">posterior-models</text>
+  <text x="418" y="384" class="b">signal-engine</text>
+  <text x="418" y="410" class="b">Structured LLM assistance</text>
+  <text x="418" y="436" class="b">No raw prompt output as signal</text>
+  <text x="418" y="470" class="mono">P(outcome | forecast set)</text>
+
+  <rect x="664" y="286" width="220" height="210" rx="22" fill="#111827" stroke="#7C2D12"/>
+  <rect x="664" y="286" width="220" height="46" rx="22" fill="url(#accentB)"/>
+  <text x="690" y="316" class="h" fill="#431407">Risk + Execution</text>
+  <text x="690" y="358" class="b">risk-engine</text>
+  <text x="690" y="384" class="b">execution-engine</text>
+  <text x="690" y="410" class="b">maker-first routing</text>
+  <text x="690" y="436" class="b">single writer authority</text>
+  <text x="690" y="470" class="mono">Normal / Cautious / HaltOpen</text>
+
+  <rect x="936" y="248" width="150" height="284" rx="20" fill="#0F172A" stroke="#475569"/>
+  <text x="962" y="282" class="h">Persistence</text>
+  <text x="962" y="316" class="b">storage-rocksdb</text>
+  <text x="962" y="344" class="b">event log</text>
+  <text x="962" y="372" class="b">orders</text>
+  <text x="962" y="400" class="b">positions</text>
+  <text x="962" y="428" class="b">risk state</text>
+  <text x="962" y="456" class="b">feature snapshots</text>
+  <text x="962" y="484" class="b">recovery / replay</text>
+
+  <rect x="392" y="548" width="492" height="72" rx="18" fill="#0F172A" stroke="#334155"/>
+  <text x="420" y="591" class="h">tradingd</text>
+  <text x="520" y="591" class="b">Single main process coordinating ingest, model, signal, risk, execution and scheduling.</text>
+
+  <path d="M340 308H378" stroke="#7DD3FC" stroke-width="4" stroke-linecap="round"/>
+  <path d="M340 472H378" stroke="#86EFAC" stroke-width="4" stroke-linecap="round"/>
+  <path d="M612 390H650" stroke="#FBBF24" stroke-width="4" stroke-linecap="round"/>
+  <path d="M884 390H920" stroke="#CBD5E1" stroke-width="4" stroke-linecap="round"/>
+  <path d="M502 496V534" stroke="#7DD3FC" stroke-width="4" stroke-linecap="round"/>
+  <path d="M774 496V534" stroke="#FCA5A5" stroke-width="4" stroke-linecap="round"/>
+
+  <circle cx="378" cy="308" r="6" fill="#7DD3FC"/>
+  <circle cx="378" cy="472" r="6" fill="#86EFAC"/>
+  <circle cx="650" cy="390" r="6" fill="#FBBF24"/>
+  <circle cx="920" cy="390" r="6" fill="#E2E8F0"/>
+  <circle cx="502" cy="534" r="6" fill="#7DD3FC"/>
+  <circle cx="774" cy="534" r="6" fill="#FCA5A5"/>
+</svg>

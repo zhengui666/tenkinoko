@@ -1,0 +1,62 @@
+name-template: "v$RESOLVED_VERSION"
+tag-template: "v$RESOLVED_VERSION"
+template: |
+  ## Summary
+
+  $CHANGES
+
+  ## Release Checks
+
+  - Review risk, execution, storage, and replay implications before tagging a release.
+  - Update `CHANGELOG.md` if the release introduces externally relevant behavior changes.
+  - Confirm no lookahead leakage or recovery regressions were introduced.
+
+categories:
+  - title: "Features"
+    labels:
+      - "enhancement"
+      - "feature"
+  - title: "Bug Fixes"
+    labels:
+      - "bug"
+      - "fix"
+  - title: "Documentation"
+    labels:
+      - "documentation"
+      - "docs"
+  - title: "Dependencies"
+    labels:
+      - "dependencies"
+  - title: "CI"
+    labels:
+      - "github-actions"
+      - "ci"
+
+change-template: "- $TITLE (#$NUMBER)"
+no-changes-template: "- No user-facing changes recorded."
+version-resolver:
+  major:
+    labels:
+      - "breaking-change"
+  minor:
+    labels:
+      - "enhancement"
+      - "feature"
+  patch:
+    labels:
+      - "bug"
+      - "fix"
+      - "documentation"
+      - "dependencies"
+      - "ci"
+  default: patch
+exclude-labels:
+  - "skip-changelog"
+autolabeler:
+  - label: "documentation"
+    files:
+      - "*.md"
+      - ".github/**"
+  - label: "github-actions"
+    files:
+      - ".github/workflows/**"

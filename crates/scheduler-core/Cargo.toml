@@ -1,0 +1,15 @@
+[package]
+name = "scheduler-core"
+version = "0.1.0"
+edition.workspace = true
+license.workspace = true
+authors.workspace = true
+repository.workspace = true
+
+[dependencies]
+anyhow.workspace = true
+chrono.workspace = true
+domain-core = { path = "../domain-core" }
+storage-rocksdb = { path = "../storage-rocksdb" }
+tokio.workspace = true
+uuid.workspace = true

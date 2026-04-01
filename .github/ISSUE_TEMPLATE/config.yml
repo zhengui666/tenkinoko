@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Contribution Guide
+    url: https://github.com/zhengui666/tenkinoko/blob/main/CONTRIBUTING.md
+    about: Read the contribution rules before opening an issue or PR
+  - name: Code of Conduct
+    url: https://github.com/zhengui666/tenkinoko/blob/main/.github/CODE_OF_CONDUCT.md
+    about: Follow the collaboration standards in all project interactions
+  - name: Release Process
+    url: https://github.com/zhengui666/tenkinoko/blob/main/RELEASING.md
+    about: Review release and changelog expectations
