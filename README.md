@@ -237,6 +237,8 @@ cargo run --release --bin tradingd -- execution-health
 - 用 prompt 直接替代概率模型与风控
 
 提交代码前，请先阅读 [CONTRIBUTING.md](/Users/zhangzeyuan/opt/tenkinoko/CONTRIBUTING.md)。
+协作交流请遵守 [.github/CODE_OF_CONDUCT.md](/Users/zhangzeyuan/opt/tenkinoko/.github/CODE_OF_CONDUCT.md)。
+版本演进与发布约定见 [CHANGELOG.md](/Users/zhangzeyuan/opt/tenkinoko/CHANGELOG.md) 和 [RELEASING.md](/Users/zhangzeyuan/opt/tenkinoko/RELEASING.md)。
 
 ## Disclaimer
 
