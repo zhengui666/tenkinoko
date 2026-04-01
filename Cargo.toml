@@ -1,0 +1,49 @@
+[workspace]
+members = [
+    "apps/tradingd",
+    "crates/backtest-engine",
+    "crates/config-core",
+    "crates/domain-core",
+    "crates/execution-engine",
+    "crates/llm-core",
+    "crates/polymarket-adapter",
+    "crates/posterior-models",
+    "crates/risk-engine",
+    "crates/scheduler-core",
+    "crates/signal-engine",
+    "crates/storage-rocksdb",
+    "crates/telegram-bot",
+    "crates/telemetry-core",
+    "crates/weather-adapter-noaa",
+    "crates/weather-adapter-openmeteo",
+]
+resolver = "2"
+
+[workspace.package]
+edition = "2024"
+license = "MIT"
+authors = ["Codex"]
+repository = "https://github.com/example/tenkinoko"
+
+[workspace.dependencies]
+anyhow = "1.0"
+async-trait = "0.1"
+chrono = { version = "0.4", features = ["serde"] }
+clap = { version = "4.5", features = ["derive", "env"] }
+futures-util = "0.3"
+regex = "1.11"
+reqwest = { version = "0.12", default-features = false, features = ["json", "rustls-tls"] }
+rocksdb = { version = "0.24", default-features = false, features = ["bindgen-runtime", "snappy"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+thiserror = "2.0"
+tokio = { version = "1.47", features = ["full"] }
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter", "fmt", "json"] }
+uuid = { version = "1.18", features = ["serde", "v4"] }
+polymarket-client-sdk = { version = "0.4.4", default-features = false, features = ["clob", "ws"] }
+
+[profile.release]
+lto = "thin"
+codegen-units = 1
+strip = true

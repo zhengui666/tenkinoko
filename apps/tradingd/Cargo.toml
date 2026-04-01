@@ -1,0 +1,29 @@
+[package]
+name = "tradingd"
+version = "0.1.0"
+edition.workspace = true
+license.workspace = true
+authors.workspace = true
+repository.workspace = true
+
+[dependencies]
+anyhow.workspace = true
+backtest-engine = { path = "../../crates/backtest-engine" }
+chrono.workspace = true
+clap.workspace = true
+config-core = { path = "../../crates/config-core" }
+domain-core = { path = "../../crates/domain-core" }
+execution-engine = { path = "../../crates/execution-engine" }
+llm-core = { path = "../../crates/llm-core" }
+polymarket-adapter = { path = "../../crates/polymarket-adapter" }
+posterior-models = { path = "../../crates/posterior-models" }
+risk-engine = { path = "../../crates/risk-engine" }
+scheduler-core = { path = "../../crates/scheduler-core" }
+signal-engine = { path = "../../crates/signal-engine" }
+storage-rocksdb = { path = "../../crates/storage-rocksdb" }
+telegram-bot = { path = "../../crates/telegram-bot" }
+telemetry-core = { path = "../../crates/telemetry-core" }
+tokio.workspace = true
+tracing.workspace = true
+weather-adapter-noaa = { path = "../../crates/weather-adapter-noaa" }
+weather-adapter-openmeteo = { path = "../../crates/weather-adapter-openmeteo" }
